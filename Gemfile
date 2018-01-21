@@ -43,7 +43,8 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'thor', '0.19.1'
 
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'autoprefixer-rails'
 
 group :development do
   gem 'listen', '~> 3.0.5'
