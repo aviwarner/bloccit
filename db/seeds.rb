@@ -13,8 +13,14 @@ require 'random_data'
     title: RandomData.random_sentence,
     body: RandomData.random_paragraph
   )
+  Advertisement.create!(
+    title: RandomData.random_sentence,
+    copy: RandomData.random_paragraph,
+    price: RandomData.random_price
+  )
 end
 posts = Post.all
+advertisements = Advertisement.all
 
 100.times do
   Comment.create!(
@@ -24,4 +30,4 @@ posts = Post.all
 end
 
 puts "Seed finished"
-puts "#{Post.count} posts created and #{Comment.count} comments created."
+puts "#{Post.count} posts created and #{Comment.count} comments created and #{Advertisement.count} ads created."
