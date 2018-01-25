@@ -14,7 +14,17 @@ require 'random_data'
     body: RandomData.random_paragraph
   )
 end
+
+50.times do
+  Question.create!(
+    title: RandomData.random_sentence,
+    body: RandomData.random_paragraph,
+    resolved: false
+  )
+end
+
 posts = Post.all
+questions = Question.all
 
 100.times do
   Comment.create!(
@@ -24,4 +34,4 @@ posts = Post.all
 end
 
 puts "Seed finished"
-puts "#{Post.count} posts created and #{Comment.count} comments created."
+puts "#{Post.count} posts created and #{Comment.count} comments created and #{Question.count} questions created."
