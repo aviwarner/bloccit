@@ -16,3 +16,15 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.gravatar {
+  float: right;
+}
+
+.sign-out {
+  float: left;
+  font-weight: bold;
+  margin-right: 10px;
+  text-align: right;
+  vertical-align: middle;
+}

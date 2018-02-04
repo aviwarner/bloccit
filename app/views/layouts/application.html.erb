@@ -22,7 +22,12 @@
         </li>
         <% if current_user %>
           <li class="pull-right">
-            <%= link_to "#{current_user.name} -Sign Out", session_path(current_user), method: :delete %>
+            <%= link_to session_path(current_user), method: :delete do%>
+            <p class="sign-out">
+              <%= current_user.name %><br  />Sign Out
+              </p>
+              <span class="gravatar"><%= image_tag avatar_url(current_user) %></span>
+            <% end %>
           </li>
         <% else %>
           <li class="pull-right">
