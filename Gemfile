@@ -11,7 +11,7 @@ gem 'rails', '~> 5.1.2'
 # #1
 group :production do
   # Use pg as the production database for Active Record
-  gem 'pg', '~> 0.20'
+  gem 'pg'
   gem 'rails_12factor'
 end
 
@@ -44,8 +44,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'thor', '0.19.1'
 
-gem 'bootstrap-sass', '~> 3.2.0'
-gem 'autoprefixer-rails'
+gem 'bootstrap-sass'
 
 gem 'bcrypt'
 
