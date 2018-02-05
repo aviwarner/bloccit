@@ -8,6 +8,15 @@
 
 require 'random_data'
 
+5.times do
+  User.create!(
+  name:           RandomData.random_name,
+  email:          RandomData.random_email,
+  password:       RandomData.random_sentence
+  )
+end
+users = User.all
+
 15.times do
   Topic.create!(
     name:         RandomData.random_sentence,
@@ -18,6 +27,7 @@ topics = Topic.all
 
 50.times do
   Post.create!(
+    user:         users.sample,
     topic:        topics.sample,
     title:        RandomData.random_sentence,
     body:         RandomData.random_paragraph
@@ -32,5 +42,11 @@ posts = Post.all
   )
 end
 
+user = User.first
+user.update_attributes!(
+  email: 'buymagicfish@gmail.com',
+  password: '123qwerty'
+)
+
 puts "Seed finished"
-puts "#{Topic.count} topics created, #{Post.count} posts created and #{Comment.count} comments created."
+puts "#{User.count} users created, #{Topic.count} topics created, #{Post.count} posts created and #{Comment.count} comments created."
