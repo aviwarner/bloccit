@@ -10,6 +10,10 @@
     <p>
       <%= @post.body %>
     </p>
+    <div>
+      <h3>Comments</h3>
+      <%= render @posts.comments %>
+    </div>
   </div>
   <div class="col-md-4">
     <% if user_is_authorized_for_post?(@post) %>
