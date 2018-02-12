@@ -26,12 +26,15 @@ end
 topics = Topic.all
 
 50.times do
-  Post.create!(
+  post = Post.create!(
     user:         users.sample,
     topic:        topics.sample,
     title:        RandomData.random_sentence,
     body:         RandomData.random_paragraph
   )
+
+  post.update_attribute(:created_at, rand(10.minutes .. 1.year).ago)
+  rand(1..10).times { post.votes.create!(value: [-1, 1].sample, user: users.sample) }
 end
 posts = Post.all
 
@@ -58,4 +61,4 @@ member = User.create!(
 )
 
 puts "Seed finished"
-puts "#{User.count} users created, #{Topic.count} topics created, #{Post.count} posts created and #{Comment.count} comments created."
+puts "#{User.count} users created, #{Topic.count} topics created, #{Post.count} posts created (with #{Vote.count} votes among them) and #{Comment.count} comments created."
