@@ -23,6 +23,19 @@ RSpec.describe Post, type: :model do
   it { is_expected.to validate_length_of(:title).is_at_least(5) }
   it { is_expected.to validate_length_of(:body).is_at_least(20) }
 
+  describe "create_vote callback" do
+    it "sets the post up_votes to 1" do
+      post = topic.posts.create!(title: RandomData.random_sentence, body: RandomData.random_sentence, user: user)
+      expect(post.up_votes).to eq(1)
+    end
+
+    it "calls #create_vote when post created" do
+      post = topic.posts.new(title: RandomData.random_sentence, body: RandomData.random_sentence, user: user)
+      expect(post).to receive(:create_vote)
+      post.save
+    end
+  end
+
   describe "attributes" do
     it "has title, body and user attributes" do
       expect(post).to have_attributes(title: title, body: body, user: user)
