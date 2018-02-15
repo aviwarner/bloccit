@@ -1,0 +1,8 @@
+New post: "<%= @post.title %>"
+<%= "=" * (@post.title.length + 12) %>
+
+By: <%= @post.user.name %>
+
+You made a post, and we favorited it for you. You'll get emails when new comments are made on it.
+
+Visit online at: <%= topic_post_url(@post.topic, @post) %>
